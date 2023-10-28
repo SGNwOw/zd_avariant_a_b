@@ -11,37 +11,69 @@ T accumulate(InputIt first, InputIt last, T init)
 		init = std::move(init) + *first; 
 	return init;
 }
-template<class vector>
-double sum_between_maximum_and_minimum_value(vector v) {//3,10
-	auto result1 = std::max_element(v.begin(), v.end());
-	//std::cout << std::distance(v.begin(), result1) << std::endl;
-	auto result2 = std::min_element(v.begin(), v.end());
-	//std::cout << std::distance(v.begin(), result2) << std::endl;
-	for (; result1 != result2; ++result1)
+template<class T>
+double sum_between_maximum_and_minimum_value(T arr, int size) {//3,10
+	double sum = 0;
+	int count1 = 0;
+	int count2 = 0;
+	int min = *(arr);
+	int max = *(arr);
+	for (int i = 0; i < size; i++)
 	{
-		int sum = accumulate(result1, result2, 0);
-		return sum;
+		if (*(arr + i) < min)
+		{
+			min = *(arr + i);
+			count1 = i;
+		}
+		if (*(arr + i) > max)
+		{
+			max = *(arr + i);
+			count2 = i;
+		}
 	}
+	for (int i = count1 + 1; i < count2; i++)
+	{
+		sum += *(arr + i);
+	}
+	return sum;
 }
-template<class vector>
-double sum_before_min(vector v) {
-	auto result = std::min_element(v.begin(), v.end());
-	//std::cout << std::distance(v.begin(), result) << std::endl;
-	for (;v.begin() != result; ++v.begin())
+template<typename T>
+double sum_to_minimum_term_value(T arr, int size) {//1,4
+	double sum = 0;
+	int count = 0;
+	int min = *(arr);
+	for (int i = 0; i < size; i++)
 	{
-		int sum = accumulate(v.begin(), result, 0);
-		return sum;
+		if (*(arr + i) < min)
+		{
+			min = *(arr + i);
+			count = i;
+		}
 	}
+	for (int i = 0; i < count; i++)
+	{
+		sum += *(arr + i);
+	}
+	return sum;
 }
-template<class vector>
-double sum_to_maximum_term_value(vector v) {//2,5
-	auto result = std::max_element(v.begin(), v.end());
-	//std::cout << std::distance(v.begin, result) << std::endl;
-	for (; v.begin()!=result; ++v.begin())
+template<typename T>
+double sum_to_maximum_term_value(T arr, int size) {//2,5
+	double sum = 0;
+	int count = 0;
+	int max = *(arr);
+	for (int i = 0; i < size; i++)
 	{
-		int sum = accumulate(v.begin(), result, 0);
-		return sum;
+		if (*(arr + i) >= max)
+		{
+			max = *(arr + i);
+			count = i;
+		}
 	}
+	for (int i = 0; i < count; i++)
+	{
+		sum += *(arr + i);
+	}
+	return sum;
 }
 
 template<typename T>

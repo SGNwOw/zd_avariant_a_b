@@ -3,25 +3,26 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+template<class Iterator, class UnaryOperation>
+void for_each(Iterator first, Iterator last, UnaryOperation up) {
+	for (; first != last; ++first)
+	{
+		up(*first);
+	}
+}
+
+
  ////////////////////////////3.1.2
- template<typename T>//1,2,3
- double output_numbers_that_are_powers_of_value(T arr,int size,int value) {
-	 int count = 0;
-	 for (int i = 0; i < size; i++) {
-		 int num = *(arr+i);
-		 while (num % value == 0 && num > 1) {
-			 num /= value;
-		 }
-		 if (num == 1) {
-			 count++;
-		 }
-	 }
-	 for (int i = 1; i < size; i*=value)
-	 {
-		 std::cout << *(arr + i) << std::endl;
-	 }
-	 return count;
- }
+template<typename Iterator>
+int print_powers_of_numbers(Iterator first, Iterator last, int value, int count) {///(3.1.2) 1 2 3
+	for (; first != last; first++) {
+		if (std::fmod(std::log(*first) / std::log(value), 1) == 0) {
+			std::cout << *first << " ";
+			++count;
+		}
+	}
+	return count;
+}
  template<typename T>//4
  double output_indices_and_numbers_of_equal_perfect_squares(T arr, int size) {
 	 int count = 0;
@@ -80,7 +81,7 @@ double combining_and_finding_sum_of_array(T arr3, T arr1, T arr2,int size1,int s
 	}
 	for (int i = 0;  i < size3;  i++)
 	{
-		if (*(arr3+i)>0)
+		if (*(arr3 + i) > 0)
 		{
 			sum += *(arr3 + i);
 		}
