@@ -13,5 +13,6 @@ int main() {
 	const int size3 = size1 + size2;
 	int arr3[size3];
 	//std::cout << find_maximum_sum_of_divisors(2,7,0);
-	std::cout << max_sum_of_divisors_v2(1,13,0);
+	//std::cout << max_sum_of_divisors_v2(1,13,0);
+	//test(10,99,99);
 }
