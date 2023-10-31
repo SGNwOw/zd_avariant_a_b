@@ -3,14 +3,7 @@
 #include<algorithm>
 #include <cmath>
 #include <vector>
-template<class InputIt, class T>
-constexpr 
-T accumulate(InputIt first, InputIt last, T init)
-{
-	for (; first != last; ++first)
-		init = std::move(init) + *first; 
-	return init;
-}
+#include "functions.h"
 template<class T>
 double sum_between_maximum_and_minimum_value(T arr, int size) {//3,10
 	double sum = 0;

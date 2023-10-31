@@ -1,6 +1,7 @@
 ﻿#include "arrays_and_pointers.h"
 #include "loops.h"
 #include "3.1.1.h"
+#include "functions.h"
 int main() {
 	//std::vector<int> v{ 3,1,14,1,0 };
 	//std::cout << sum_to_maximum_term_value(v);
@@ -14,5 +15,5 @@ int main() {
 	int arr3[size3];
 	//std::cout << find_maximum_sum_of_divisors(2,7,0);
 	//std::cout << max_sum_of_divisors_v2(1,13,0);
-	//test(10,99,99);
+	find_all_numbers_that_are_twins(10);
 }

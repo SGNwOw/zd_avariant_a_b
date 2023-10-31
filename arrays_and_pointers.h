@@ -3,15 +3,7 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-template<class Iterator, class UnaryOperation>
-void for_each(Iterator first, Iterator last, UnaryOperation up) {
-	for (; first != last; ++first)
-	{
-		up(*first);
-	}
-}
-
-
+#include "functions.h"
  ////////////////////////////3.1.2
 template<typename Iterator>
 int print_powers_of_numbers(Iterator first, Iterator last, int value, int count) {///(3.1.2) 1 2 3

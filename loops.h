@@ -1,107 +1,7 @@
 #pragma once
 #include <cmath>
 #include <iostream>
-template<class Itertor, class UnaryOperation, typename T>
-T template_with_return(Itertor first, Itertor last, T result, UnaryOperation func) {
-	for (; first != last; ++first)
-	{
-		result = func(first, result);
-	}
-	return result;
-}
-int sum_of_digits(int n) {
-	int sum = 0;
-	while (n > 0) {
-		sum += n % 10;
-		n /= 10;
-	}
-	return sum;
-}
-template<typename T>
-int count_number_size(T value) {
-	int count = 0;
-	for (; value != 0; count++) {
-		value /= 10;
-	}
-	return count;
-}
-template<class T>
-T divider_counter(T begin, T end, T value, T count) {
-	for (; begin != end; ++begin)
-	{
-		if (value % begin == 0)
-		{
-			count++;
-		}
-	}
-	return count;
-}
-template<class T>
-T divider_counter1(T value) {
-	int count = 0;
-	for (int i = 1; i < value; i++)
-	{
-		if (value % i == 0)
-		{
-			count++;
-		}
-	}
-	return count;
-}
-/*template<class T>
-T gcd(T first_value, T second_value);
-bool is_coprime(int n, int m) {
-	return gcd(n, m) == 1;
-}*/
-int sum_of_divisors(int n) {
-	int sum = 0;
-	for (int i = 1; i <= n; ++i) {
-		if (n % i == 0) {
-			sum += i;
-		}
-	}
-	return sum;
-}
-bool is_divisible(int n, int count) {
-	int temp = n;
-	while (temp > 0) {
-		int digit = temp % 10;
-		if (digit != 0 && n % digit == 0) {
-			count++;
-		}
-		temp /= 10;
-	}
-	if (count >= count_number_size(n)) {
-		return true;
-	}
-	return false;
-}
-bool is_increasing(int n) {
-	int last_digit = n % 10;
-	n /= 10;
-	while (n > 0) {
-		int digit = n % 10;
-		if (digit >= last_digit) {
-			return false;
-		}
-		last_digit = digit;
-		n /= 10;
-	}
-	return true;
-}
-bool is_not_increasing(int n) {
-	int last_digit = n % 10;
-	n /= 10;
-	while (n > 0) {
-		int digit = n % 10;
-		if (digit <= last_digit) {
-			return false;
-		}
-		last_digit = digit;
-		n /= 10;
-	}
-	return true;
-}
+#include "functions.h"
 ////////////2.1
 template<class T>
 T find_sum_of_number_are_powers_5(T begin, T end, T sum,T value,T count,T value1) {//1,5
@@ -116,7 +16,6 @@ T find_sum_of_number_are_powers_5(T begin, T end, T sum,T value,T count,T value1
 	}
 	return sum;
 }
-
 template<class T>
 T sum_of_vaues_that_divisible_by_value(T begin, T end, T sum,T value) {//2,6,7,8
 	for (; begin != end; ++begin)
@@ -298,7 +197,7 @@ T count_numbers(T start, T end, T value, T count) {///(2.4) 1
 		});
 }
 template <typename T>
-void count_ways(T value, T& count, int number_1, int number_2, int number_3, int number_4, int number_5, int number_6) {
+void count_ways(T value, T& count, int number_1, int number_2, int number_3, int number_4, int number_5, int number_6) {//2.2,2.3
 	for (int i = 0; i <= value / number_1; i++) {
 		for (int j = 0; j <= (value - i * number_1) / number_2; j++) {
 			for (int k = 0; k <= (value - i * number_1 - j * number_2) / number_3; k++) {
@@ -316,10 +215,10 @@ void count_ways(T value, T& count, int number_1, int number_2, int number_3, int
 	}
 }
 template<class T>
-void test(T begin, T end, T end1) {
+void test(T begin,T temp, T end, T end1) {//2.4
 	for (; begin != end; ++begin)
 	{
-		for (T begin1 = 10; begin1 != end1; ++begin1)
+		for (T begin1 = temp; begin1 != end1; ++begin1)
 		{
 			if ((begin * 100 + begin1) % (begin * begin1) == 0)
 			{
@@ -330,7 +229,7 @@ void test(T begin, T end, T end1) {
 }
 
 template <typename T>
-void three_digit_numbers_in_decimal_notations_no_identical_digits(T value_i, T value_j, T value_k) {///(2.4) 5 
+void three_digit_numbers_in_decimal_notations_no_identical_digits(T value_i, T value_j, T value_k) {// 5 
 	for (; value_i <= 9; value_i++) {
 		for (T value_j = 0; value_j <= 9; value_j++) {
 			if (value_j != value_i) {
@@ -344,7 +243,7 @@ void three_digit_numbers_in_decimal_notations_no_identical_digits(T value_i, T v
 	}
 }
 template<typename T>
-void natural_numbers_smaller_value(T number, T end, int degree) {///(2.4) 6
+void natural_numbers_smaller_value(T number, T end, int degree) {// 6
 	for_each(1, end, [&number, &degree](int value) {
 		if (std::pow(sum_of_digits(value), degree) == number) {
 			std::cout << value << std::endl;
@@ -352,7 +251,7 @@ void natural_numbers_smaller_value(T number, T end, int degree) {///(2.4) 6
 		});
 }
 template <typename T>
-void natural_numbers_not_divisible(T last) {///(2.4) 7
+void natural_numbers_not_divisible(T last) {// 7
 	for_each(1, last, [](int value) {
 		if (!is_divisible(value, 0)) {
 			std::cout << value << std::endl;
@@ -360,14 +259,14 @@ void natural_numbers_not_divisible(T last) {///(2.4) 7
 		});
 }
 template <typename T>
-void find_reversible_pairs(T start, T start_2, T last) {///(2.4) 8
+void find_reversible_pairs(T start, T start_2, T last) {// 8
 	for (; start <= last; ++start)
 		for (int start_2 = 10; start_2 <= last; ++start_2)
 			if (start * start_2 == (start % 10 * 10 + start / 10) * (start_2 % 10 * 10 + start_2 / 10))
 				std::cout << start << " " << start_2 << std::endl;
 }
 template <typename T>
-void increasing_numbers(T last) {///(2.4) 9
+void increasing_numbers(T last) {// 9
 	for_each(1, last, [](int value) {
 		if (is_increasing(value)) {
 			std::cout << value << std::endl;
@@ -375,7 +274,7 @@ void increasing_numbers(T last) {///(2.4) 9
 		});
 }
 template <typename T>
-void decreasing_numbers(T last) {///(2.4) 10
+void decreasing_numbers(T last) {// 10
 	for_each(1, last, [](int value) {
 		if (is_not_increasing(value)) {
 			std::cout << value << std::endl;
@@ -383,7 +282,7 @@ void decreasing_numbers(T last) {///(2.4) 10
 		});
 }
 template <typename T>
-void table_of_partitions_of_a_number_by_the_sum_of_three_terms(T last) {///(2.4) 11
+void table_of_partitions_of_a_number_by_the_sum_of_three_terms(T last) {// 11
 	for (int i = 1; i <= last / 3; i++) {
 		for (int j = i; j <= (last - i) / 2; j++) {
 			int k = last - i - j;
@@ -394,10 +293,109 @@ void table_of_partitions_of_a_number_by_the_sum_of_three_terms(T last) {///(2.4)
 	}
 }
 template <typename T>
-void find_numbers(T last) {///(2.4) 12
+void find_numbers(T last) {// 12
 	for_each(1, last, [](int value) {
 		if (is_divisible(value, 0)) {
 			std::cout << value << std::endl;
 		}
 		});
 }
+////////////////////////2.5
+template <class T>
+void find_prime_numbers_not_exceeding_value(T begin,T value) {//1
+	for (;begin!=value; ++begin)
+	{
+		if (is_prime(begin))
+		{
+			std::cout << begin << std::endl;
+		}
+	}
+}
+template <class T>
+void get_all_prime_numbers_of_value(T begin,T value,T temp) {//2
+	for (; begin != value; ++begin)
+	{
+		if (is_prime(begin))
+		{
+			temp = begin;
+			if (value % temp == 0)
+			{
+				std::cout << temp << std::endl;
+			}
+		}
+	}
+}
+template<class T>
+void get_simple_four_digit_numbers_which_sum_of_first_two_digits_equal_to_sum_of_last(T begin, T end) {//3
+	for (;begin!=end; ++begin)
+	{
+		if (is_prime(begin) && (begin % 10 + ((begin / 10) % 10)) == ((begin / 100) % 10 + ((begin / 1000) % 10)))
+		{
+			std::cout << begin << std::endl;
+		}
+	}
+}
+template <class T>
+T calculate_sum_of_numbers_whose_ordinal_numbers_are_prime_numbers(T begin, T end, T count,T sum) {//4
+	for (; begin != end; ++begin)
+	{
+		++count;
+		if (is_prime(count))
+		{
+			sum += begin;
+		}
+	}
+	return sum;
+}
+template <class T>
+int find_sum_of_prime_numbers(T begin,T end,T sum) {//5
+	for (; begin != end; ++begin)
+	{
+		if (is_prime(begin))
+		{
+			sum += begin;
+		}
+	}
+	return sum;
+}
+template <class T>
+void get_first_100_prime_numbers(T begin, T sum,T count) {//6
+	for (;;++begin)
+	{
+		if (is_prime(begin))
+		{
+			count++;
+			std::cout << begin << std::endl;
+		}
+		if (count == 100)
+		{
+			break;
+		}
+	}
+}
+template <class T>
+void find_number_of_prime_numbers(T begin, T quantity, T count) {//7
+	for (;; ++begin)
+	{
+		if (is_prime(begin))
+		{
+			count++;
+			std::cout << begin << std::endl;
+		}
+		if (count == quantity)
+		{
+			break;
+		}
+	}
+}
+template<class T>
+void find_all_numbers_that_are_twins(T begin) {//8
+	T end = 2 * begin;
+	for (; begin != end; ++begin)
+	{
+		if (is_prime(begin-2))
+		{
+			std::cout << begin << " " << begin - 2 << std::endl;
+		}
+	}
+} 
