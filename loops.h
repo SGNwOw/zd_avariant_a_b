@@ -399,3 +399,33 @@ void find_all_numbers_that_are_twins(T begin) {//8
 		}
 	}
 } 
+template <class T>
+void find_prime_numbers_whose_sum_of_digits_is_less_than_value(T begin, T end, T value) {//9
+	for (; begin != end; ++begin)
+	{
+		if (is_prime(begin) && sum_of_digits(begin) < value)
+		{
+			std::cout << begin << std::endl;
+		}
+	}
+}
+template<class T>
+void find_prime_numbers_in_range_unsigned_short_int_and_unsigned_int(T begin,T end) {//10,11
+	for (; begin != end; ++begin)
+	{
+		if (is_prime(begin))
+		{
+			std::cout << begin << std::endl;
+		}
+	}
+}
+template <class T>
+void find_super_prime_numbers(T begin, T end) {//12
+	for (;begin!=end; ++begin)
+	{
+		if (is_prime(begin) && is_prime(reverse(begin)))
+		{
+			std::cout << begin << std::endl;
+		}
+	}
+}

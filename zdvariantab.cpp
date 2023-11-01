@@ -15,5 +15,6 @@ int main() {
 	int arr3[size3];
 	//std::cout << find_maximum_sum_of_divisors(2,7,0);
 	//std::cout << max_sum_of_divisors_v2(1,13,0);
-	find_all_numbers_that_are_twins(10);
+	//find_prime_numbers_whose_sum_of_digits_is_less_than_value(1,10,8);
+	find_super_prime_numbers(10,99);
 }
