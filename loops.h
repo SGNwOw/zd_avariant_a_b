@@ -302,7 +302,7 @@ void find_numbers(T last) {// 12
 }
 ////////////////////////2.5
 template <class T>
-void find_prime_numbers_not_exceeding_value(T begin,T value) {//1
+void find_prime_numbers_not_exceeding_value(T begin,T value) {//1,10,11
 	for (;begin!=value; ++begin)
 	{
 		if (is_prime(begin))
@@ -312,15 +312,14 @@ void find_prime_numbers_not_exceeding_value(T begin,T value) {//1
 	}
 }
 template <class T>
-void get_all_prime_numbers_of_value(T begin,T value,T temp) {//2
+void get_all_prime_numbers_of_value(T begin,T value) {//2
 	for (; begin != value; ++begin)
 	{
 		if (is_prime(begin))
 		{
-			temp = begin;
-			if (value % temp == 0)
+			if (value % begin == 0)
 			{
-				std::cout << temp << std::endl;
+				std::cout << begin << std::endl;
 			}
 		}
 	}
@@ -348,7 +347,7 @@ T calculate_sum_of_numbers_whose_ordinal_numbers_are_prime_numbers(T begin, T en
 	return sum;
 }
 template <class T>
-int find_sum_of_prime_numbers(T begin,T end,T sum) {//5
+T find_sum_of_prime_numbers(T begin,T end,T sum) {//5
 	for (; begin != end; ++begin)
 	{
 		if (is_prime(begin))
@@ -409,16 +408,6 @@ void find_prime_numbers_whose_sum_of_digits_is_less_than_value(T begin, T end, T
 		}
 	}
 }
-template<class T>
-void find_prime_numbers_in_range_unsigned_short_int_and_unsigned_int(T begin,T end) {//10,11
-	for (; begin != end; ++begin)
-	{
-		if (is_prime(begin))
-		{
-			std::cout << begin << std::endl;
-		}
-	}
-}
 template <class T>
 void find_super_prime_numbers(T begin, T end) {//12
 	for (;begin!=end; ++begin)
@@ -427,5 +416,28 @@ void find_super_prime_numbers(T begin, T end) {//12
 		{
 			std::cout << begin << std::endl;
 		}
+	}
+}
+//////////////////2.6
+template<class T>
+void find_powers_of_number_to_end_of_range(T begin, T end, T value) {//1,2,7,8
+	for (; begin != end; ++begin)
+	{
+		if (pow(value,begin)>end)
+		{
+			break;
+		}
+		std::cout << pow(value,begin) << std::endl;
+	}
+}
+template<class T>
+void find_factorial_of_number_to_end_of_range(T begin, T end) {//3,9
+	for (; begin != end; ++begin)
+	{
+		if (Fact(begin) > end)
+		{
+			break;
+		}
+		std::cout << Fact(begin) << std::endl;
 	}
 }

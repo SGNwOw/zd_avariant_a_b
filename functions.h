@@ -138,3 +138,12 @@ int reverse(int n) {
 	}
 	return reverse;
 }
+double Fact(int value)
+{
+	if (value == 0 || value == 1) {
+		return 1;
+	}
+	{
+		return value * Fact(value - 1);
+	}
+}

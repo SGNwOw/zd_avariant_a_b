@@ -16,5 +16,5 @@ int main() {
 	//std::cout << find_maximum_sum_of_divisors(2,7,0);
 	//std::cout << max_sum_of_divisors_v2(1,13,0);
 	//find_prime_numbers_whose_sum_of_digits_is_less_than_value(1,10,8);
-	find_super_prime_numbers(10,99);
+	find_factorial_of_number_to_end_of_range(1,20);
 }
