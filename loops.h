@@ -187,8 +187,9 @@ int max_sum_of_divisors_v2(int value1, int value2, int count) {///(2.3) 10
 	}
 	return count;
 }*/
+/////////////////////////////2.4
 template <typename T>
-T count_numbers(T start, T end, T value, T count) {///(2.4) 1 
+T count_numbers(T start, T end, T value, T count) {// 1 
 	return template_with_return(start, end, 0, [&count, &value](int begin, int end) {
 		if (begin % 10 + (begin / 10) % 10 + begin / 100 == value) {
 			count++;
@@ -197,7 +198,7 @@ T count_numbers(T start, T end, T value, T count) {///(2.4) 1
 		});
 }
 template <typename T>
-void count_ways(T value, T& count, int number_1, int number_2, int number_3, int number_4, int number_5, int number_6) {//2.2,2.3
+void count_ways(T value, T& count, int number_1, int number_2, int number_3, int number_4, int number_5, int number_6) {//2,3
 	for (int i = 0; i <= value / number_1; i++) {
 		for (int j = 0; j <= (value - i * number_1) / number_2; j++) {
 			for (int k = 0; k <= (value - i * number_1 - j * number_2) / number_3; k++) {
@@ -215,7 +216,7 @@ void count_ways(T value, T& count, int number_1, int number_2, int number_3, int
 	}
 }
 template<class T>
-void test(T begin,T temp, T end, T end1) {//2.4
+void test(T begin,T temp, T end, T end1) {//4
 	for (; begin != end; ++begin)
 	{
 		for (T begin1 = temp; begin1 != end1; ++begin1)
@@ -300,7 +301,7 @@ void find_numbers(T last) {// 12
 		}
 		});
 }
-////////////////////////2.5
+/////////////////////////////////////2.5
 template <class T>
 void find_prime_numbers_not_exceeding_value(T begin,T value) {//1,10,11
 	for (;begin!=value; ++begin)
@@ -418,7 +419,7 @@ void find_super_prime_numbers(T begin, T end) {//12
 		}
 	}
 }
-//////////////////2.6
+////////////////////////////////////////////////2.6
 template<class T>
 void find_powers_of_number_to_end_of_range(T begin, T end, T value) {//1,2,7,8
 	for (; begin != end; ++begin)
@@ -440,4 +441,45 @@ void find_factorial_of_number_to_end_of_range(T begin, T end) {//3,9
 		}
 		std::cout << Fact(begin) << std::endl;
 	}
+}
+template<class T>
+T determine_number_of_maximum_fib_number(T begin, T end, T count) {//4,10
+	for (; begin != end; ++begin)
+	{
+		if (is_fib(begin,1,1,1,1))
+		{
+			count++;
+		}
+	}
+	return count;
+}
+template<class T>
+void find_maximum_value_of_double_factorial_in_range(T begin, T end) {//5,6,11,12
+	for (;double_fact(begin,begin,1)<end; ++begin)
+	{
+		std::cout << double_fact(begin, begin, 1) << std::endl;
+	}
+}
+///////////////////2.7
+template<class T>
+T sum_of_sequence(T begin, T end,T sum) {//1
+	for (; begin != end; ++begin)
+	{
+		sum += pow(begin, begin);
+	}
+	return sum;
+}
+template<class T>
+T sum_of_sequence1(T begin, T end, T begin1, T end1,T sum1,T sum2,T count) {
+	for (; begin1 != end1; ++begin1)
+	{
+		count++;
+		for (begin = 0; begin != end; ++begin)
+		{
+			sum1 += pow(begin, count);
+			std::cout << sum1 << std::endl;
+		}
+		sum2 += sum1;
+	}
+	return sum2;
 }

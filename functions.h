@@ -147,3 +147,37 @@ double Fact(int value)
 		return value * Fact(value - 1);
 	}
 }
+int Fib(int n)
+{
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	return Fib(n - 1) + Fib(n - 2);
+}
+template<class T>
+bool is_fib(T value, T fib_0, T fib_1, T fib_2, T begin) {
+	for (; begin != value; ++begin)
+	{
+		fib_0 = fib_1;
+		fib_1 = fib_2;
+		fib_2 = fib_1 + fib_0;
+		if (fib_2 == value)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+template<class T>
+int double_fact(T begin, T value,T product) {
+	if (value % 2 == 0)
+		begin = 2;
+	else
+		begin = 1;
+	for (; begin <= value; begin += 2)
+	{
+		product *= begin;
+	}
+	return product;
+}
