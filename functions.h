@@ -3,9 +3,17 @@
 #include<algorithm>
 #include <cmath>
 #include <vector>
+template<class Iterator, class T>
+T accumulate(Iterator first, Iterator last, T init) {
+	for (; first != last; ++first)
+	{
+		init += *first;
+	}
+	return init;
+}
 template<class InputIt, class T>
 constexpr
-T accumulate(InputIt first, InputIt last, T init)
+T accumulate1(InputIt first, InputIt last, T init)
 {
 	for (; first != last; ++first)
 		init = std::move(init) + *first;
@@ -181,3 +189,79 @@ int double_fact(T begin, T value,T product) {
 	}
 	return product;
 }
+template<class Iterator, class T>
+Iterator find(Iterator first, Iterator last, T value) {
+	for (; first != last; ++first)
+	{
+		if (*first == value)
+		{
+			return *first;
+		}
+	}
+	return last;
+}
+template<class Iterator, class UnaryPredecate>
+Iterator find_if(Iterator first, Iterator last, UnaryPredecate up) {
+	for (; first != last; ++first)
+	{
+		if (up(first))
+		{
+			return first;
+		}
+	}
+	return last;
+}
+template<class Iterator, class Comporator>
+Iterator search1(Iterator first, Iterator last, Comporator c) {
+	Iterator result = first++;
+	for (; first != last; ++first)
+	{
+		if (c(first, result))
+		{
+			result = first;
+		}
+	}
+	return result;
+}
+template<class Iterator>
+Iterator min_1(Iterator first, Iterator last) {
+	return search1(first, last, [](Iterator a, Iterator b) { return *a < *b; });
+}
+template<class Iterator>
+Iterator max_1(Iterator first, Iterator last) {
+	return search1(first, last, [](Iterator a, Iterator b) { return *a > *b; });
+}
+template<class Iterator>
+Iterator max_module_1(Iterator first, Iterator last) {
+	return search1(first, last, [](Iterator a, Iterator b) { return abs(*a) > abs(*b); });
+}
+template<class Iterator>
+Iterator min_module_1(Iterator first, Iterator last) {
+	return search1(first, last, [](Iterator a, Iterator b) { return abs(*a) < (*b); });
+}
+/*int main()
+{
+	int arr[]{ -10,-2,3,4,-5,6,7,8,9,10 };
+	int* max_el = max_1(arr, arr + 10);
+	int* min_el = min_1(arr, arr + 10);
+	//std::cout << accumulate(max_el + 1, min_el, 0);
+	int* first_positive = find_if(arr, arr + 10, [](int* a) {return *a > 0; });
+	int* min_positive = search1(first_positive, arr + 10, [](int* a, int* b) {
+		if (*a < 0)
+		{
+			return false;
+		}
+		return *a < *b;
+		});
+	//std::cout << *min_positive;
+	int* first_negative = find_if(arr, arr + 10, [](int* a) {return *a < 0; });
+	int* max_negative = search1(first_negative, arr + 10, [](int* a, int* b) {
+		if (*a > 0)
+		{
+			return false;
+		}
+		return *a > *b;
+		});
+	//std::cout << *max_negative;
+	std::cout << accumulate(max_negative, min_positive, 0);
+}*/

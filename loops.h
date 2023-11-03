@@ -28,10 +28,11 @@ T sum_of_vaues_that_divisible_by_value(T begin, T end, T sum,T value) {//2,6,7,8
 }
 template <class T>
 T sum_of_fib_numbers(T begin, T end, T sum, T value, T value1) {//3
-	for (; value > begin , value < end;)
+	for (; value < end;)
 	{
 		value = value + value1;
 		value1 = value - value1;
+		sum += value;
 		if (value>end)
 		{
 			return sum;
@@ -470,7 +471,7 @@ T sum_of_sequence(T begin, T end,T sum) {//1
 	return sum;
 }
 template<class T>
-T sum_of_sequence1(T begin, T end, T begin1, T end1,T sum1,T sum2,T count) {
+T sum_of_sequence1(T begin, T end, T begin1, T end1, T sum1, T sum2, T count) {//2
 	for (; begin1 != end1; ++begin1)
 	{
 		count++;
