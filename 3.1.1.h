@@ -56,7 +56,7 @@ double sum_before_min_positive_and_max_negative(Iterator first,Iterator last) {/
 		});
 	return accumulate(min_positive, max_negative, 0);
 }
-template<class T>
+/*template<class T>
 double sum_between_maximum_and_minimum_value(T arr, int size) {//3,10
 	double sum = 0;
 	int count1 = 0;
@@ -260,4 +260,4 @@ int sum_between_minimum_positive_and_maximum_negative(T arr, int size) {//12
 		sum += *(arr + i);
 	}
 	return sum;
-}
+}*/

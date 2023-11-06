@@ -223,6 +223,19 @@ Iterator search1(Iterator first, Iterator last, Comporator c) {
 	}
 	return result;
 }
+template<class Iterator,class Comporator>
+Iterator search2(Iterator first, Iterator last, Comporator c) {
+	Iterator result = first++;
+	for (; first != last; ++first)
+	{
+		if (c(first,result))
+		{
+			*result = *first;
+		}
+		std::cout << *result << std::endl;
+	}
+	return result;
+}
 template<class Iterator>
 Iterator min_1(Iterator first, Iterator last) {
 	return search1(first, last, [](Iterator a, Iterator b) { return *a < *b; });
@@ -238,6 +251,10 @@ Iterator max_module_1(Iterator first, Iterator last) {
 template<class Iterator>
 Iterator min_module_1(Iterator first, Iterator last) {
 	return search1(first, last, [](Iterator a, Iterator b) { return abs(*a) < (*b); });
+}
+template<class Iterator>
+Iterator find_indexes(Iterator first, Iterator last) {
+	return search2(first, last, [](Iterator a, Iterator b) {return  a * *a < *b; });
 }
 /*int main()
 {

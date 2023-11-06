@@ -6,7 +6,7 @@
 #include "functions.h"
  ////////////////////////////3.1.2
 template<typename Iterator>
-int print_powers_of_numbers(Iterator first, Iterator last, int value, int count) {///(3.1.2) 1 2 3
+int print_powers_of_numbers(Iterator first, Iterator last, int value, int count) {// 1 2 3
 	for (; first != last; first++) {
 		if (std::fmod(std::log(*first) / std::log(value), 1) == 0) {
 			std::cout << *first << " ";
@@ -15,49 +15,67 @@ int print_powers_of_numbers(Iterator first, Iterator last, int value, int count)
 	}
 	return count;
 }
- template<typename T>//4
- double output_indices_and_numbers_of_equal_perfect_squares(T arr, int size) {
-	 int count = 0;
-	 for (int i = 0; i < size; i++) {
-		 if (sqrt(i) == floor(sqrt(i))) {
-			 count++;
-		 }
-	 }
-	 for (int i = 0; i*i < size;i++)
-	 {
-		 std::cout << *(arr + i*i) << std::endl;
-	 }
-	 return count;
- }
-template<typename T>//5
-double output_indices_of_prime_numbers_and_themselves(T arr, int size) {
-	int count = 0;
-	for (int i = 0; i < size; i++)
-	{
-		int divider = 2;
-		while ((divider < *(arr+i) - 1) && (*(arr+i) % divider) != 0)
-		{
-			divider++;
-		}
-		if ((*(arr + i) % divider) != 0) {
-			std::cout << *(arr + i) << std::endl;
-			count++;
+template <typename Iterotor>
+int checking_indexes_on_function(Iterotor first, Iterotor last, bool (*func)(int), int count,int count1) {///(3.1.2) 5 4 6
+	for (; first != last; first++, count++) {
+		if (func(count)) {
+			std::cout << *first << std::endl;
+			count1++;
 		}
 	}
-	return count;
+	return count1;
 }
-template<typename T>
-double index_output_fibonacci_numbers_and_themselves(T arr, int size) {//?
-	int count = 0;
-	for (int i = 0; i < size; i++)
+template<class Iterator>
+double indexes_to_values(Iterator first1, Iterator first2, Iterator last1, Iterator last2,int count,int sum,Iterator nul) {
+	for (; first1 != last1; ++first1)
 	{
-		if (*(arr+i+3)==*(arr+i+2)+*(arr+i+1))
+		count++;
+		for (first2=nul; first2 != last2; ++first2)
 		{
-			std::cout << *(arr + i) << std::endl;
-			count++;
+			if (*first2 == count)
+			{
+				sum += *first2;
+			}
 		}
 	}
-	return count;
+	return sum;
+}
+/*template <typename Iterotor>
+int find_smallest(Iterotor arr_first, Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_second, int smallest) {///(3.1.2)  9
+	for (; arr_first != size_arr_first; ++arr_first)
+	{
+		if (*arr_first < smallest) {
+			smallest = *arr_first;
+		}
+	}
+	for (; arr_second != size_arr_second; ++arr_second)
+	{
+		if (smallest == *arr_second)
+		{
+			return 0;
+		}
+	}
+	return smallest;
+}*/
+template <typename Iterotor>
+int find_largest(Iterotor arr_first, Iterotor arr_second, Iterotor size_arr_first, Iterotor size_arr_secondint, int largest) {///(3.1.2)  10
+	for (; arr_first != size_arr_first; arr_first++) {
+		for (; arr_second != size_arr_secondint; arr_second++) {
+			if (*arr_first == *arr_second && *arr_first > largest) {
+				largest = *arr_first;
+				break;
+			}
+		}
+	}
+	return largest;
+}
+template <typename Iterotor>
+int count_inversions(Iterotor first, Iterotor last, int inversions, int count, int result) {///(3.1.2)  11
+	for (; first != last; first++, count++)
+		for (; count + 1 != last; (count + 1)++)
+			if (*first > *(first + (count + 1)))
+				result++;
+	return result;
 }
  /////////////////////////////////////////////////3.1.3
 template<typename T>
@@ -104,6 +122,18 @@ double combining_and_find_negative_maximum_of_array(T arr3, T arr1, T arr2, int 
 	}
 	return max;
 }
+/*template<typename T>
+int maximum_among_negative_elements(T arr, T arr2, int size_1, int size_2, int (*func)(int)) {///(3.1.3) 2
+	std::vector<double> mergedArr = mergeArrays(arr, arr2, size_1, size_2);
+	for (auto item : mergedArr)
+	{
+		if (item < 0 && item > *func) {
+			*func = *func(item, 0);
+		}
+
+	}
+	return *func;
+}*/
 template<typename T>
 double finding_maximum_sum_pairs_of_numbers(T arr, int size) {//3
 	int max_sum = 0;
